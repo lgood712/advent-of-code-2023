@@ -1,7 +1,7 @@
-#https://adventofcode.com/2023/day/4
+#https://adventofcode.com/2023/day/6
 import re
 
-with open("test") as f:
+with open("input") as f:
     data = f.read().strip().splitlines()
 
 # Part 1

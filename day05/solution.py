@@ -1,4 +1,4 @@
-#https://adventofcode.com/2023/day/4
+#https://adventofcode.com/2023/day/5
 import re
 
 with open("input") as f:
