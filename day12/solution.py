@@ -22,9 +22,6 @@ def dfs(sequence, groups):
         return skip
     return skip + dfs(sequence[group_len+1:].lstrip('.'), tuple(groups[1:]))
 
-    
-
-
 def p1results(data):
     total = 0
     for line in data:
@@ -38,6 +35,12 @@ print("P1 RESULT: ", p1results(data))
 
 # Part 2
 def p2results(data):
-    return
+    total = 0
+    for line in data:
+        sequence, groups = line.split()
+        sequence = '?'.join([sequence]*5)
+        groups = tuple([int(g) for g in groups.split(',')]*5)
+        total += dfs(sequence, groups)
+    return total
 
 print("P2 RESULT: ", p2results(data))
