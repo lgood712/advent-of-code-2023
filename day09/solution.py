@@ -1,4 +1,4 @@
-#https://adventofcode.com/2023/day/8
+#https://adventofcode.com/2023/day/9
 import re
 from collections import Counter
 from functools import cmp_to_key
@@ -46,10 +46,10 @@ print("P1 RESULT: ", p1results(data))
 
 # Part 2
 
-def p2results(directions, ntwk):
+def p2results(data):
     sum = 0
     for seq in data:
         sum += extrapolate(seq, False)
     return sum
 
-print("P2 RESULT: ", p2results(data, data))
+print("P2 RESULT: ", p2results(data))
