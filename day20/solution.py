@@ -1,7 +1,5 @@
 #https://adventofcode.com/2023/day/20
 
-import math
-
 with open("input") as f:
     data = f.read().strip().splitlines()
 
