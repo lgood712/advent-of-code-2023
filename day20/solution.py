@@ -21,7 +21,7 @@ for n,m in modules.items():
     for d in m[1]:
         if d in conjunctions.keys():
             conjunctions[d][n] = False
-conjunctions_p2 = conjunctions.copy() # need this for part 2
+#conjunctions_p2 = conjunctions.copy() # need this for part 2
 
 # Part 1
 def flip_flop(signal, state):
@@ -29,14 +29,17 @@ def flip_flop(signal, state):
         return state
     return not state
 
-def conjunct(name, signal, sender):
-    conjunctions[name][sender] = signal
-    for s in conjunctions[name].values():
-        if not s:
-            return True
-    return False
 
-def p1(mods, n=1000):
+
+def p1(mods, cons, n=1000):
+
+    def conjunct(name, signal, sender):
+        cons[name][sender] = signal
+        for s in cons[name].values():
+            if not s:
+                return True
+        return False
+
     low_count, high_count = 0, 0
     for i in range(n):
         q = [('broadcaster', False, 'button')] # queue of (destination, signal, sender)
@@ -68,8 +71,17 @@ def p1(mods, n=1000):
                 q.append((d, s, curr[0]))
     return high_count*low_count
 
-print("P1 RESULT: ", p1(modules))
+print("P1 RESULT: ", p1(modules, conjunctions))
 
 # Part 2
+# Manual investigation:
+# rx needs to receive a low pulse from &cs
+# &cs sends a low pulse when it receives a high pulse from one of
+# &kh, &lz, &tg, &hn
+# and the other three last sent a high pulse to &cs
+
+# Therefore, we need to find a patterned cycle for each of those 4 modules
+# then identify when they would overlap.
+
 
 print("P2 RESULT: ", None)
